@@ -1,0 +1,425 @@
+/* =============================================
+   SISTEMA DE DESIGN - Variáveis CSS
+   ============================================= */
+:root {
+    /* Cores Primárias */
+    --color-primary-red: #FF0000;
+    --color-primary-green: #0DB023;
+    --color-black: #000000;
+    --color-white: #FFFFFF;
+    --color-text-dark: #333333;
+    --color-gray: #666666;
+    --color-light-gray: #F5F5F5;
+
+    /* Tipografia */
+    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+
+    /* Espaçamentos */
+    --spacing-xs: 8px;
+    --spacing-sm: 16px;
+    --spacing-md: 24px;
+    --spacing-lg: 32px;
+    --spacing-xl: 48px;
+    --spacing-xxl: 64px;
+
+    /* Bordas */
+    --border-radius: 10px;
+    --border-radius-lg: 15px;
+
+    /* Sombras */
+    --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+    /* Transições */
+    --transition-fast: 0.3s ease;
+    --transition-normal: 0.6s ease-out;
+}
+
+/* =============================================
+   RESET E BASE
+   ============================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    background-color: var(--color-white);
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+/* =============================================
+   ANIMAÇÕES
+   ============================================= */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(30px);
+}
+
+.fade-in-up.visible {
+    animation: fadeInUp var(--transition-normal) forwards;
+}
+
+/* =============================================
+   SEÇÃO 1: BARRA DE URGÊNCIA
+   ============================================= */
+.urgency-bar {
+    background-color: var(--color-primary-red);
+    color: var(--color-white);
+    text-align: center;
+    padding: var(--spacing-sm);
+    font-weight: bold;
+    font-size: 16px;
+    letter-spacing: 0.5px;
+}
+
+/* =============================================
+   CONTAINER PRINCIPAL
+   ============================================= */
+.container {
+    max-width: 450px;
+    margin: 0 auto;
+    padding: var(--spacing-md);
+}
+
+/* =============================================
+   SEÇÃO 2: HEADLINE PRINCIPAL
+   ============================================= */
+.headline-section {
+    text-align: center;
+    padding: 3px var(--spacing-md);
+}
+
+.headline-section h1 {
+    font-size: 42px;
+    font-weight: 600;
+    color: var(--color-black);
+    line-height: 1.3;
+    margin-bottom: var(--spacing-md);
+}
+
+.headline-section h1 .bold-highlight {
+    font-weight: 900;
+    display: block;
+}
+
+/* =============================================
+   SEÇÃO 3: QUADRO UNIFICADO COM BORDA
+   ============================================= */
+.offer-box {
+    border: 3px solid var(--color-black);
+    border-radius: var(--border-radius-lg);
+    padding: 0;
+    margin: var(--spacing-md) 0;
+    background-color: var(--color-white);
+    overflow: hidden;
+}
+
+/* Imagem do Produto */
+.offer-image-wrapper {
+    width: 100%;
+    padding: var(--spacing-md);
+}
+
+.offer-image {
+    width: 100%;
+    height: auto;
+    border-radius: var(--border-radius);
+}
+
+/* Banner Plataforma Completa */
+.platform-banner {
+    background-color: var(--color-primary-red);
+    color: var(--color-white);
+    text-align: center;
+    padding: var(--spacing-sm);
+}
+
+.platform-banner h2 {
+    font-size: 24px;
+    font-weight: 900;
+    letter-spacing: 1px;
+    margin: 0;
+}
+
+/* Preços */
+.pricing-block {
+    text-align: center;
+    padding: var(--spacing-md) var(--spacing-sm);
+}
+
+.normal-price {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--color-gray);
+    margin-bottom: var(--spacing-sm);
+}
+
+.strikethrough-animated {
+    position: relative;
+    display: inline-block;
+}
+
+.strikethrough-animated::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 50%;
+    width: 0;
+    height: 2px;
+    background-color: var(--color-primary-red);
+    animation: strikethrough 1s ease-out 0.5s forwards;
+}
+
+@keyframes strikethrough {
+    to {
+        width: 100%;
+    }
+}
+
+.promo-price {
+    font-size: 24px;
+    color: var(--color-primary-red);
+    font-weight: 900;
+    line-height: 1.4;
+}
+
+.price-value {
+    font-size: 42px;
+    font-weight: 900;
+    display: block;
+    margin-top: var(--spacing-xs);
+}
+
+/* Lista de Recursos */
+.offer-features-list {
+    list-style: none;
+    padding: 0 var(--spacing-md);
+    margin: var(--spacing-md) 0;
+}
+
+.offer-features-list li {
+    display: flex;
+    align-items: flex-start;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs) 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.checkmark-icon,
+.gift-icon,
+.check-icon,
+.infinity-icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.offer-features-list li span {
+    flex: 1;
+}
+
+.offer-features-list li strong {
+    font-weight: 700;
+}
+
+/* Texto de Urgência */
+.urgency-banner {
+    background-color: var(--color-primary-red);
+    color: var(--color-white);
+    text-align: center;
+    padding: var(--spacing-sm);
+    margin: var(--spacing-md) 0 0 0;
+}
+
+.urgency-banner p {
+    font-size: 16px;
+    font-weight: 700;
+    margin: 0;
+}
+
+/* Botões CTA */
+.cta-buttons {
+    padding: var(--spacing-md);
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-sm);
+}
+
+.cta-btn {
+    display: inline-block;
+    width: 100%;
+    padding: var(--spacing-md);
+    font-weight: 900;
+    letter-spacing: 0.5px;
+    border-radius: var(--border-radius);
+    transition: all var(--transition-fast);
+    text-transform: uppercase;
+    text-decoration: none;
+    text-align: center;
+}
+
+.cta-primary {
+    background-color: var(--color-primary-green);
+    color: var(--color-white);
+    font-size: 20px;
+    padding: var(--spacing-lg) var(--spacing-md);
+}
+
+.cta-primary:hover {
+    filter: brightness(0.9);
+    transform: translateY(-2px);
+}
+
+.cta-secondary {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    font-size: 14px;
+    padding: var(--spacing-md);
+}
+
+.cta-secondary:hover {
+    filter: brightness(1.2);
+    transform: translateY(-2px);
+}
+
+/* =============================================
+   SEÇÃO 4: BANNER DE ATENÇÃO FINAL (IMAGEM)
+   ============================================= */
+.warning-banner-image {
+    text-align: center;
+    margin: var(--spacing-xl) 0;
+}
+
+.warning-image {
+    max-width: 100%;
+    height: auto;
+    margin: 0 auto;
+    border-radius: var(--border-radius-lg);
+}
+
+/* =============================================
+   SEÇÃO 5: FOOTER LEGAL
+   ============================================= */
+.legal-footer {
+    background-color: var(--color-black);
+    color: var(--color-white);
+    text-align: center;
+    padding: var(--spacing-md);
+    font-size: 14px;
+}
+
+.legal-footer a {
+    color: var(--color-white);
+    transition: opacity var(--transition-fast);
+}
+
+.legal-footer a:hover {
+    opacity: 0.7;
+    text-decoration: underline;
+}
+
+/* =============================================
+   RESPONSIVIDADE MOBILE
+   ============================================= */
+@media (max-width: 768px) {
+    .container {
+        max-width: 100%;
+        padding: var(--spacing-sm);
+    }
+
+    .headline-section h1 {
+        font-size: 32px;
+    }
+
+    .platform-banner h2 {
+        font-size: 20px;
+    }
+
+    .price-value {
+        font-size: 28px;
+    }
+
+    .offer-features-list li {
+        font-size: 15px;
+    }
+
+    .cta-btn {
+        font-size: 16px;
+        padding: var(--spacing-sm);
+    }
+}
+
+@media (max-width: 480px) {
+    .headline-section h1 {
+        font-size: 26px;
+    }
+
+    .urgency-bar {
+        font-size: 14px;
+        padding: var(--spacing-xs);
+    }
+
+    .platform-banner h2 {
+        font-size: 18px;
+    }
+
+    .price-value {
+        font-size: 26px;
+    }
+
+    .offer-box {
+        border-width: 2px;
+    }
+
+    .offer-image-wrapper {
+        padding: var(--spacing-sm);
+    }
+}

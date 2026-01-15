@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Descubra como faturar até 3 mil por mês costurando e vendendo vestidos incríveis. +90 Moldes de Vestidos por apenas R$5,99">
+    <title>Moldes de Vestidos - Aprenda a Costurar e Faturar</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- UTMify Script -->
+    <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck
+        data-utmify-prevent-subids async defer></script>
+
+    <!-- Utmify Pixel Script -->
+    <script>
+        window.pixelId = "6968577de59f7b37e4f7d2f9";
+        var a = document.createElement("script");
+        a.setAttribute("async", "");
+        a.setAttribute("defer", "");
+        a.setAttribute("src", "https://cdn.utmify.com.br/scripts/pixel/pixel.js");
+        document.head.appendChild(a);
+    </script>
+
+    <!-- PIXEL UTM - redirect (Algo interno nosso) -->
+    <script>
+        // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR
+        const link = 'https://oportunidadesdigitais.site/redirect/';
+
+        function setBackRedirect(url) {
+            let urlBackRedirect = url;
+            urlBackRedirect = urlBackRedirect =
+                urlBackRedirect.trim() +
+                (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
+                document.location.search.replace('?', '').toString();
+
+            history.pushState({}, '', location.href);
+            history.pushState({}, '', location.href);
+            history.pushState({}, '', location.href);
+
+            window.addEventListener('popstate', () => {
+                console.log('onpopstate', urlBackRedirect);
+                setTimeout(() => {
+                    location.href = urlBackRedirect;
+                }, 1);
+            });
+        }
+
+        setBackRedirect(link);
+    </script>
+</head>
+
+<body>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="fade-in">Descubra como faturar até <span class="highlight">3 mil por mês</span>
+                        costurando e vendendo vestidos <span class="highlight">Incríveis</span></h1>
+
+                    <div class="offer-banner fade-in">
+                        <div class="offer-text">
+                            <span class="offer-title">+90 Moldes de Vestidos</span>
+                        </div>
+                    </div>
+
+
+                    <p class="hero-subtext fade-in">Moldes Prontos com todas as medidas, basta você recortar e costurar
+                        por apenas <strong class="price-inline">R$5,99</strong></p>
+
+                    <div class="hero-image fade-in">
+                        <img src="images/vestido-novo.png" alt="Moldes de Vestidos" class="dress-icon">
+                    </div>
+
+
+                    <div class="price-highlight fade-in">
+                        <span class="price-label">Por apenas</span>
+                        <span class="price-value">R$ 5,99</span>
+                    </div>
+
+                    <a href="#premium-plan" class="btn btn-primary btn-cta fade-in">
+                        <i class="fas fa-shopping-cart"></i> QUERO ESSA SUPER OFERTA
+                    </a>
+
+                    <div class="trust-badge fade-in">
+                        <img src="images/compra-segura.webp" alt="Compra Segura" class="badge-img">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Wave Divider -->
+        <div class="wave-divider">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" preserveAspectRatio="none">
+                <path
+                    d="M421.9,6.5c22.6-2.5,51.5,0.4,75.5,5.3c23.6,4.9,70.9,23.5,100.5,35.7c75.8,32.2,133.7,44.5,192.6,49.7c23.6,2.1,48.7,3.5,103.4-2.5c54.7-6,106.2-25.6,106.2-25.6V0H0v30.3c0,0,72,32.6,158.4,30.5c39.2-0.7,92.8-6.7,134-22.4c21.2-8.1,52.2-18.2,79.7-24.2C399.3,7.9,411.6,7.5,421.9,6.5z">
+                </path>
+            </svg>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <h2 class="section-title fade-in">UM POUCO DO QUE VOCÊ TERÁ ACESSO...</h2>
+
+            <div class="premium-showcase fade-in">
+                <img src="images/moldes-premium.webp" alt="Moldes Premium" class="premium-img">
+            </div>
+
+            <div class="features-checklist">
+                <div class="feature-check-item fade-in">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Moldes para vestidos curtos, midi, longos, sociais, casuais, etc...</p>
+                </div>
+
+                <div class="feature-check-item fade-in">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Tamanhos: P/M/G</p>
+                </div>
+
+                <div class="feature-check-item fade-in">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Basta imprimir em qualquer impressora doméstica</p>
+                </div>
+
+                <div class="feature-check-item fade-in">
+                    <i class="fas fa-check-circle"></i>
+                    <p>Moldes já Testados, Ajustados e Aprovados</p>
+                </div>
+
+                <div class="feature-check-item fade-in">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>E MUITO MAIS...</strong></p>
+                </div>
+            </div>
+
+            <div class="features-security-badge fade-in">
+                <img src="images/compra-segura.webp" alt="Compra Segura" class="security-badge-img">
+            </div>
+        </div>
+    </section>
+
+    <!-- Bonus Section -->
+    <section class="bonus-section">
+        <div class="container">
+            <h2 class="section-title fade-in">BÔNUS INCRÍVEIS</h2>
+
+            <div class="bonus-grid">
+                <div class="bonus-card-new fade-in">
+                    <div class="bonus-header">
+                        <h3>+30 Moldes de Brinde</h3>
+                    </div>
+                    <div class="bonus-content">
+                        <img src="images/bonus-moldes.webp" alt="Moldes de Brinde" class="bonus-img">
+                        <p class="bonus-description">Ganhe <strong>+30 moldes de brinde</strong> para criar vestidos
+                            infantis incríveis: fáceis de usar, adaptáveis e inspiradores.</p>
+                        <p class="bonus-price">DE <span class="strikethrough">R$297,00</span></p>
+                        <div class="bonus-free">GRÁTIS</div>
+                    </div>
+                </div>
+
+                <div class="bonus-card-new fade-in">
+                    <div class="bonus-header">
+                        <h3>Os Melhores Tecidos</h3>
+                    </div>
+                    <div class="bonus-content">
+                        <img src="images/bonus-tecidos.webp" alt="Guia de Tecidos" class="bonus-img">
+                        <p class="bonus-description">Descubra <strong>os melhores tecidos para vestidos:</strong> toque
+                            suave, estampas encantadoras e durabilidade ideal para conforto e alegria dos seus clientes.
+                        </p>
+                        <p class="bonus-price">DE <span class="strikethrough">R$177,00</span></p>
+                        <div class="bonus-free">GRÁTIS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Target Audience Section -->
+    <section class="target-section">
+        <div class="container">
+            <h2 class="section-title fade-in">PARA QUEM É ESSE MATERIAL?</h2>
+
+            <div class="target-checklist">
+                <div class="target-check-item fade-in">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Para quem ama costurar com propósito</strong> – Descubra +90 moldes de vestidos fáceis e
+                        práticos para criar peças incríveis.</p>
+                </div>
+
+                <div class="target-check-item fade-in">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Para quem busca praticidade</strong> – Modelos simples, com passo a passo descomplicado,
+                        perfeitos para iniciantes e experientes.</p>
+                </div>
+
+                <div class="target-check-item fade-in">
+                    <i class="fas fa-check-circle"></i>
+                    <p><strong>Para quem deseja exclusividade</strong> – Moldes variados e modernos para produzir
+                        vestidos únicos e cheios de estilo.</p>
+                </div>
+
+                <div class="target-check-item fade-in">
+                    <i class="fas fa-stars"></i>
+                    <p><strong>E MUITO MAIS...</strong></p>
+                </div>
+            </div>
+
+            <p class="fade-in">Este material prova que é possível criar vestidos encantadores e cheios de
+                personalidade sem complicação. São <strong>+90 moldes completos</strong>, peças variadas e ideias
+                inspiradoras. Aproveite o valor promocional e comece hoje mesmo!</p>
+
+            <p class="fade-in">Chega de perder tempo buscando moldes isolados. Aqui você terá um padrão completo,
+                com detalhes especiais e modelagens que encantam.</p>
+
+            <p class="fade-in">Com este material, você poderá costurar vestidos para uso próprio, presentear ou até
+                mesmo vender e lucrar.</p>
+
+            <p class="fade-in final-price">Tudo isso investindo apenas <strong>R$ 5,99</strong></p>
+        </div>
+    </section>
+
+    <!-- How It Works Section -->
+    <section class="how-it-works-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Como Funciona?</h2>
+
+            <div class="steps-grid">
+                <div class="step-card fade-in">
+                    <div class="step-number">1</div>
+                    <div class="step-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3>Faça seu Pedido</h3>
+                    <p>Escolha o plano ideal e finalize sua compra de forma segura</p>
+                </div>
+
+                <div class="step-card fade-in">
+                    <div class="step-number">2</div>
+                    <div class="step-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <h3>Receba no Email</h3>
+                    <p>Acesso imediato via email após confirmação do pagamento</p>
+                </div>
+
+                <div class="step-card fade-in">
+                    <div class="step-number">3</div>
+                    <div class="step-icon">
+                        <i class="fas fa-download"></i>
+                    </div>
+                    <h3>Baixe os Moldes</h3>
+                    <p>Download de todos os PDFs com acesso vitalício</p>
+                </div>
+
+                <div class="step-card fade-in">
+                    <div class="step-number">4</div>
+                    <div class="step-icon">
+                        <i class="fas fa-scissors"></i>
+                    </div>
+                    <h3>Comece a Costurar!</h3>
+                    <p>Imprima, corte e crie vestidos incríveis</p>
+                </div>
+            </div>
+
+            <div class="process-features fade-in">
+                <div class="process-item">
+                    <i class="fas fa-file-pdf"></i>
+                    <span>100% Digital (PDF)</span>
+                </div>
+                <div class="process-item">
+                    <i class="fas fa-bolt"></i>
+                    <span>Acesso Imediato</span>
+                </div>
+                <div class="process-item">
+                    <i class="fas fa-infinity"></i>
+                    <span>Acesso Vitalício</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+        <div class="container">
+            <h2 class="section-title fade-in-fast">O QUE DIZEM NOSSOS CLIENTES</h2>
+
+            <div class="testimonials-videos">
+                <div class="video-wrapper fade-in-fast">
+                    <div class="wistia_responsive_padding" style="padding:181.67% 0 0 0;position:relative;">
+                        <div class="wistia_responsive_wrapper"
+                            style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                            <iframe src="https://fast.wistia.net/embed/iframe/m8zqhps66l?web_component=true&seo=true"
+                                title="Depoimento Cliente 1" allow="autoplay; fullscreen" allowtransparency="true"
+                                frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%"
+                                height="100%" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-wrapper fade-in-fast">
+                    <div class="wistia_responsive_padding" style="padding:181.67% 0 0 0;position:relative;">
+                        <div class="wistia_responsive_wrapper"
+                            style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                            <iframe src="https://fast.wistia.net/embed/iframe/emrpxu378i?web_component=true&seo=true"
+                                title="Depoimento Cliente 2" allow="autoplay; fullscreen" allowtransparency="true"
+                                frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%"
+                                height="100%" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="video-wrapper fade-in-fast">
+                    <div class="wistia_responsive_padding" style="padding:181.82% 0 0 0;position:relative;">
+                        <div class="wistia_responsive_wrapper"
+                            style="height:100%;left:0;position:absolute;top:0;width:100%;">
+                            <iframe src="https://fast.wistia.net/embed/iframe/luonol78q8?web_component=true&seo=true"
+                                title="Depoimento Cliente 3" allow="autoplay; fullscreen" allowtransparency="true"
+                                frameborder="0" scrolling="no" class="wistia_embed" name="wistia_embed" width="100%"
+                                height="100%" loading="lazy"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="https://fast.wistia.net/player.js" async></script>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+        <div class="container">
+            <h2 class="section-title fade-in">Escolha a melhor Oferta para você!</h2>
+
+            <div class="pricing-grid-new">
+                <!-- Basic Plan Card -->
+                <div class="pricing-card-new basic-card fade-in">
+                    <div class="card-header-black">
+                        <h3>PLANO BÁSICO</h3>
+                    </div>
+                    <div class="card-body-white">
+                        <div class="plan-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>+20 Moldes de Vestidos</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Bônus Exclusivos</span>
+                            </div>
+                        </div>
+                        <div class="plan-price-green">R$5,99</div>
+                        <a href="https://oportunidadesdigitais.site/redirect/" class="btn-green" target="_blank">
+                            LIBERAR OFERTA BÁSICA
+                        </a>
+                        <p class="upsell-text">Mas antes de comprar...</p>
+                        <p class="upsell-highlight">temos uma oferta <strong>AINDA MAIS vantajosa</strong> para você!
+                            Veja logo abaixo ⬇️</p>
+                    </div>
+                </div>
+
+                <!-- Premium Plan Card -->
+                <div id="premium-plan" class="pricing-card-new premium-card-new fade-in">
+                    <div class="card-header-black">
+                        <h3>PLANO PREMIUM</h3>
+                        <div class="best-seller-badge">🏆Nº1 em vendas</div>
+                    </div>
+                    <div class="card-body-purple">
+                        <div class="product-showcase">
+                            <img src="images/premium-dresses.jpg" alt="Moldes Premium" class="product-image">
+                            <div class="emoji-badge">🤩</div>
+                        </div>
+                        <div class="price-old">DE R$149,00</div>
+                        <div class="price-new-label">POR APENAS</div>
+                        <div class="price-new-value">R$13,99</div>
+
+                        <div class="premium-benefits">
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>+90 Moldes para vestidos curtos, midi, longos, sociais, casuais, etc...</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Vídeo aula de como Imprimir os Moldes</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Moldes de Saia Jeans, Social, Evasê</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Moldes Vestidos Básico</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Moldes Vestido Alcinha</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Moldes Vestido em Malha</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Moldes Vestido Cruzado</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Moldes Vestido Mãe e Filha</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Moldes Vestido Trapézio</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Moldes Vestido Plus Size</span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>E muitos outros</strong></span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-gift"></i>
+                                <span><strong>Área de Membros Premium</strong></span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span><strong>7 Dias de Garantia</strong></span>
+                            </div>
+                            <div class="benefit-item">
+                                <i class="fas fa-infinity"></i>
+                                <span><strong>Acesso vitalício</strong></span>
+                            </div>
+                        </div>
+
+                        <a href="https://pay.lowify.com.br/checkout?product_id=qKMVP8" class="btn-yellow"
+                            target="_blank">
+                            Quero essa Super Oferta!👆
+                        </a>
+
+                        <div class="payment-logos-premium">
+                            <img src="images/payment-logos.png" alt="Formas de Pagamento">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guarantee Section -->
+    <section class="guarantee-section">
+        <div class="container">
+            <div class="guarantee-content fade-in-fast">
+                <div class="guarantee-badge">
+                    <img src="images/garantia-7-dias.webp" alt="Garantia 7 Dias" class="guarantee-img">
+                </div>
+                <div class="guarantee-text">
+                    <h2>Garantia de 7 Dias</h2>
+                    <p>Se por algum motivo você não gostar do material, devolvemos <strong>100% do seu dinheiro</strong>
+                        sem burocracia. Você não tem nada a perder!</p>
+                    <div class="guarantee-icon">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Compra 100% Segura</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="about-section">
+        <div class="container">
+            <h2 class="section-title fade-in-fast">Quem Sou Eu?</h2>
+
+            <div class="about-content fade-in-fast">
+                <div class="about-image">
+                    <img src="images/autora.webp" alt="Luiza Fernandes" class="author-img">
+                </div>
+                <div class="about-text">
+                    <h3>Luiza Fernandes</h3>
+                    <p>Olá! Sou apaixonada por costura e criação de moldes há mais de 10 anos. Comecei como hobby e hoje
+                        é minha principal fonte de renda.</p>
+                    <p>Criei este material pensando em você que quer aprender a costurar vestidos lindos de forma
+                        prática e profissional. Todos os moldes foram testados e ajustados para garantir o melhor
+                        resultado.</p>
+                    <p>Minha missão é ajudar outras pessoas a descobrirem o prazer de costurar e transformarem essa
+                        habilidade em uma fonte de renda extra ou até mesmo um negócio lucrativo!</p>
+                    <div class="author-signature">
+                        <p><strong>Com carinho, Luiza ❤️</strong></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section class="final-cta-section">
+        <div class="container">
+            <div class="final-cta-content fade-in-fast">
+                <h2>Não Perca Esta Oportunidade!</h2>
+                <p>Comece hoje mesmo a criar vestidos incríveis e transforme sua paixão em lucro</p>
+                <a href="#premium-plan" class="btn btn-primary btn-cta btn-large">
+                    <i class="fas fa-shopping-cart"></i> GARANTIR MINHA VAGA AGORA
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title fade-in-fast">Perguntas Frequentes</h2>
+
+            <div class="faq-container">
+                <div class="faq-item fade-in-fast">
+                    <button class="faq-question">
+                        <span>Como irei receber meu acesso?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Assim que você realizar a compra, você receberá no seu e-mail o link de acesso. Basta criar a
+                            sua senha e entrar na plataforma.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in-fast">
+                    <button class="faq-question">
+                        <span>Por quanto tempo terei acesso?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Ambos os planos possuem acesso vitalício.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in-fast">
+                    <button class="faq-question">
+                        <span>O pagamento é seguro?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim, é 100% seguro. O <strong>Mercado Pago</strong> é uma das maiores empresas de pagamentos
+                            e hospedagens de produtos online do Brasil.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2026 Moldes de Vestidos. Todos os direitos reservados.</p>
+            <p class="footer-links">
+                <a href="#">Política de Privacidade</a> |
+                <a href="#">Termos de Uso</a> |
+                <a href="#">Contato</a>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Main JavaScript -->
+    <script src="script.js"></script>
+</body>
+
+</html>
