@@ -4,7 +4,8 @@
     "description": "Landing page - Moldes de Vestidos",
     "scripts": {
         "build": "echo 'No build needed - static site'",
-        "start": "npx http-server -p 8080"
+        "start": "node server.js",
+        "deploy": "firebase deploy"
     },
     "dependencies": {
         "http-server": "^14.1.1"

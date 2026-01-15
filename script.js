@@ -19,8 +19,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 // INTERSECTION OBSERVER FOR SCROLL REVEALS
 // ===================================
 const observerOptions = {
-    threshold: 0.15,
-    rootMargin: '0px 0px -100px 0px'
+    threshold: 0.05,
+    rootMargin: '0px 0px -20px 0px'
 };
 
 const observer = new IntersectionObserver((entries) => {
@@ -96,12 +96,7 @@ if ('IntersectionObserver' in window) {
 // ADD ENTRANCE ANIMATIONS STAGGER
 // ===================================
 document.addEventListener('DOMContentLoaded', () => {
-    const fadeElements = document.querySelectorAll('.fade-in');
-
-    fadeElements.forEach((el, index) => {
-        // Add slight delay to each element for stagger effect
-        el.style.transitionDelay = `${index * 0.05}s`;
-    });
+    // Stagger logic removed for faster display
 });
 
 // ===================================

@@ -2,7 +2,7 @@ const http = require('http');
 const fs = require('fs');
 const path = require('path');
 
-const PORT = 9200;
+const PORT = process.env.PORT || 9200; // Use environment PORT for App Hosting
 const MIME_TYPES = {
     '.html': 'text/html',
     '.js': 'text/javascript',
