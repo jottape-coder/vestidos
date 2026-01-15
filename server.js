@@ -17,36 +17,32 @@ const MIME_TYPES = {
 http.createServer((req, res) => {
     console.log(`${req.method} ${req.url}`);
 
-    let filePath = '.' + req.url;
+    // Parse URL to ignore query strings (e.g. ?utm_source=...)
+    const parsedUrl = new URL(req.url, `http://${req.headers.host}`);
+    let filePath = '.' + parsedUrl.pathname;
+
     if (filePath === './') filePath = './index.html';
 
     const extname = path.extname(filePath);
     let contentType = MIME_TYPES[extname] || 'application/octet-stream';
 
+
+
+    // Check if it's a directory before trying to read it
+    if (fs.existsSync(filePath) && fs.lstatSync(filePath).isDirectory()) {
+        if (!parsedUrl.pathname.endsWith('/')) {
+            // Redirect to directory with trailing slash, keeping query params
+            parsedUrl.pathname += '/';
+            res.writeHead(301, { 'Location': parsedUrl.toString() });
+            res.end();
+            return;
+        }
+        filePath = path.join(filePath, 'index.html');
+    }
+
     fs.readFile(filePath, (error, content) => {
         if (error) {
             if (error.code == 'ENOENT') {
-                // Rewrite for SPA support or just simple 404 for now, but user mentioned redirects.
-                // Let's check if it's a directory like /admin or /Redirect
-                if (fs.existsSync(filePath) && fs.lstatSync(filePath).isDirectory()) {
-                    if (!req.url.endsWith('/')) {
-                        res.writeHead(301, { 'Location': req.url + '/' });
-                        res.end();
-                        return;
-                    }
-                    filePath += 'index.html';
-                    fs.readFile(filePath, (err, idxContent) => {
-                        if (err) {
-                            res.writeHead(404);
-                            res.end('404 Not Found (Dir index mismatch)');
-                        } else {
-                            res.writeHead(200, { 'Content-Type': 'text/html' });
-                            res.end(idxContent, 'utf-8');
-                        }
-                    });
-                    return;
-                }
-
                 res.writeHead(404);
                 res.end('404 Not Found');
             } else {
