@@ -23,18 +23,22 @@ const db = firebase.firestore();
 
 // Helper function to log events to Firestore
 function logEvent(eventName, eventData = {}) {
-    const event = {
-        event_name: eventName,
-        timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-        url: window.location.href,
-        session_id: getSessionId(),
-        user_agent: navigator.userAgent,
-        ...eventData
-    };
+    try {
+        const event = {
+            event_name: eventName,
+            timestamp: new Date(), // Using client-side date avoids SDK version issues
+            url: window.location.href,
+            session_id: getSessionId(),
+            user_agent: navigator.userAgent,
+            ...eventData
+        };
 
-    db.collection('events').add(event)
-        .then(() => console.log(`Event logged: ${eventName}`))
-        .catch((error) => console.error("Error logging event: ", error));
+        db.collection('events').add(event)
+            .then(() => console.log(`Event logged: ${eventName}`))
+            .catch((error) => console.error("Error logging event: ", error));
+    } catch (e) {
+        console.error("Critical error in logEvent:", e);
+    }
 }
 
 // Generate or retrieve simplified session ID

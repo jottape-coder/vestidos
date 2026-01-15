@@ -1,20 +1,22 @@
 # OS Files
-.DS_Store
 Thumbs.db
-desktop.ini
+Desktop.ini
+.DS_Store
 
-# Editor directories
+# Editor
 .vscode/
 .idea/
-*.sublime-*
 
-# Logs
-*.log
-
-# Temporary files
-*.tmp
-*.temp
-~*
-
-# Node modules (if you add any in the future)
+# Node/Firebase
 node_modules/
+.firebase/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+firebase-debug.log*
+
+# Portable Binaries
+firebase-cli.exe
+node.zip
+node-v*
+server.js
