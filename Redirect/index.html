@@ -25,6 +25,26 @@
 
     <!-- Firebase Configuration -->
     <script src="../firebase-config.js"></script>
+
+    <!-- Tracking Script -->
+    <script>
+        window.onload = function () {
+            if (typeof logEvent === 'function') logEvent('page_view_redirect', { page: 'redirect_upgrade' });
+        };
+        document.addEventListener('DOMContentLoaded', () => {
+            const btns = document.querySelectorAll('.cta-btn');
+            btns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    if (typeof logEvent === 'function') {
+                        logEvent('click_upgrade_action', {
+                            button_text: btn.innerText,
+                            action_type: btn.classList.contains('cta-primary') ? 'upgrade_yes' : 'upgrade_no'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
 </head>
 
 <body>

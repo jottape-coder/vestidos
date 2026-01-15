@@ -42,6 +42,26 @@
     <!-- Firebase Configuration -->
     <script src="firebase-config.js"></script>
 
+    <!-- Tracking Script -->
+    <script>
+        window.onload = function () {
+            if (typeof logEvent === 'function') logEvent('page_view', { page: 'home' });
+        };
+        document.addEventListener('DOMContentLoaded', () => {
+            const ctaButtons = document.querySelectorAll('.btn-cta, .btn-primary, .btn-green, .btn-yellow');
+            ctaButtons.forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    if (typeof logEvent === 'function') {
+                        logEvent('click_cta', {
+                            button_text: btn.innerText || 'unknown',
+                            target_url: btn.getAttribute('href')
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+
     <!-- PIXEL UTM - redirect (Algo interno nosso) -->
     <script>
         // ALTERE O LINK PARA A PÁGINA QUE QUISER MOSTRAR QUANDO O USUÁRIO TENTAR SAIR

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Painel Administrativo - Funil de Vendas</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <!-- Firebase SDKs -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+    <script src="../firebase-config.js"></script>
+</head>
+
+<body>
+    <div class="admin-container">
+        <header class="admin-header">
+            <h1>📊 Dashboard do Funil</h1>
+            <div class="date-filter">
+                <span>Últimos 30 dias</span>
+            </div>
+        </header>
+
+        <main class="dashboard-grid">
+            <!-- Métricas Principais -->
+            <div class="metrics-cards">
+                <div class="card metric-card">
+                    <h3>Visitantes (Home)</h3>
+                    <p class="metric-value" id="total-visitors">--</p>
+                    <span class="metric-label">Page Views</span>
+                </div>
+                <div class="card metric-card">
+                    <h3>Leads (Cliques CTA)</h3>
+                    <p class="metric-value" id="total-leads">--</p>
+                    <span class="metric-label">Cliques de Compra</span>
+                </div>
+                <div class="card metric-card">
+                    <h3>Redirect (Upgrade)</h3>
+                    <p class="metric-value" id="total-redirects">--</p>
+                    <span class="metric-label">Visualizações</span>
+                </div>
+                <div class="card metric-card">
+                    <h3>Conversão Home</h3>
+                    <p class="metric-value highlight" id="conversion-rate">--%</p>
+                    <span class="metric-label">Visitante -> Lead</span>
+                </div>
+            </div>
+
+            <!-- Gráfico do Funil -->
+            <div class="charts-section">
+                <div class="card chart-card">
+                    <h3>Funil de Conversão</h3>
+                    <div class="chart-container">
+                        <canvas id="funnelChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela de Eventos Recentes -->
+            <div class="recent-events-section">
+                <div class="card">
+                    <h3>Eventos Recentes</h3>
+                    <div class="table-responsive">
+                        <table class="events-table">
+                            <thead>
+                                <tr>
+                                    <th>Data/Hora</th>
+                                    <th>Evento</th>
+                                    <th>Página</th>
+                                    <th>Detalhes</th>
+                                </tr>
+                            </thead>
+                            <tbody id="events-table-body">
+                                <tr>
+                                    <td colspan="4">Carregando dados...</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
