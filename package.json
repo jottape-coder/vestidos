@@ -1,0 +1,12 @@
+{
+    "name": "vestidos-moldes",
+    "version": "1.0.0",
+    "description": "Landing page - Moldes de Vestidos",
+    "scripts": {
+        "build": "echo 'No build needed - static site'",
+        "start": "npx http-server -p 8080"
+    },
+    "dependencies": {
+        "http-server": "^14.1.1"
+    }
+}
