@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oferta Especial - Upsell</title>
+    <!-- Reuse main styles for base variables and fonts -->
+    <link rel="stylesheet" href="../style.css">
+    <!-- Upsell specific styles -->
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+    <div class="upsell-container fade-in">
+        <header class="upsell-header">
+            <h1 class="headline-urgent">ESPERE! ✋ NÃO FECHE ESSA PÁGINA...</h1>
+            <p class="subheadline">Temos uma oportunidade única para você completar sua coleção.</p>
+        </header>
+
+        <section class="vsl-section">
+            <div class="video-placeholder">
+                <div class="play-button-overlay">
+                    <i class="fas fa-play-circle"></i>
+                </div>
+                <p>VIDEO DE OFERTA EXCLUSIVA</p>
+                <p class="video-subtext">(Assista para entender o Bônus)</p>
+            </div>
+        </section>
+
+        <section class="offer-section">
+            <div class="upsell-card">
+                <div class="card-badge">OFERTA ÚNICA</div>
+                <h2>Pacote Ouro: +500 Moldes Premium</h2>
+                <p class="offer-desc">Leve agora o acesso completo a nossa biblioteca secreta de moldes de alta costura.
+                </p>
+
+                <div class="benefit-list">
+                    <div class="benefit-item"><i class="fas fa-check"></i> <span>Moldes de Vestidos de Gala</span></div>
+                    <div class="benefit-item"><i class="fas fa-check"></i> <span>Moldes de Noiva e Debutante</span>
+                    </div>
+                    <div class="benefit-item"><i class="fas fa-check"></i> <span>Acesso Vitalício ao Grupo VIP</span>
+                    </div>
+                </div>
+
+                <div class="price-box">
+                    <span class="old-price">De R$ 97,00</span>
+                    <div class="new-price-container">
+                        <span class="por">Por apenas</span>
+                        <span class="new-price">R$ 19,90</span>
+                    </div>
+                </div>
+
+                <a href="#" class="btn-upsell pulse-animation">
+                    SIM! QUERO ADICIONAR AO MEU PEDIDO
+                    <small>Adicionar agora por apenas R$ 19,90</small>
+                </a>
+
+                <a href="#" class="no-thanks">Não obrigado, vou perder essa chance única e ficar apenas com o
+                    básico.</a>
+            </div>
+        </section>
+
+        <section class="guarantee-section-small">
+            <div class="guarantee-badge-small">
+                <i class="fas fa-shield-alt"></i>
+                <span>Garantia Incondicional de 7 Dias</span>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            document.querySelector('.upsell-container').classList.add('visible');
+        });
+    </script>
+</body>
+
+</html>
