@@ -20,6 +20,8 @@
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="urgency-banner.css">
+    <link rel="stylesheet" href="premium-styles.css"> <!-- New Premium Styles -->
 
     <!-- UTMify Script -->
     <script src="https://cdn.utmify.com.br/scripts/utms/latest.js" data-utmify-prevent-xcod-sck
@@ -53,13 +55,56 @@
             ctaButtons.forEach(btn => {
                 btn.addEventListener('click', (e) => {
                     if (typeof logEvent === 'function') {
-                        logEvent('click_cta', {
+                        const targetUrl = btn.getAttribute('href');
+                        let eventName = 'click_cta'; // default
+                        let offerType = 'unknown';
+
+                        // Determine offer type based on href
+                        if (targetUrl && targetUrl.includes('checkout')) {
+                            eventName = 'click_premium_offer'; // Premium plan (checkout/payment)
+                            offerType = 'premium';
+                        } else if (targetUrl && (targetUrl.includes('redirect') || targetUrl.includes('redirect/'))) {
+                            eventName = 'click_basic_offer'; // Basic plan (redirect page)
+                            offerType = 'basic';
+                        } else if (targetUrl && targetUrl.startsWith('#')) {
+                            eventName = 'click_upgrade_offer'; // Scroll to premium section
+                            offerType = 'upgrade';
+                        }
+
+                        logEvent(eventName, {
                             button_text: btn.innerText || 'unknown',
-                            target_url: btn.getAttribute('href')
+                            target_url: targetUrl,
+                            offer_type: offerType
                         });
                     }
                 });
             });
+        });
+
+        // Scroll Depth Tracking
+        const scrollMilestones = { 25: false, 50: false, 75: false, 100: false };
+        let scrollTimeout;
+
+        window.addEventListener('scroll', () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(() => {
+                const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const scrollPercent = Math.round((scrollTop / scrollHeight) * 100);
+
+                // Check milestones
+                [25, 50, 75, 100].forEach(milestone => {
+                    if (scrollPercent >= milestone && !scrollMilestones[milestone]) {
+                        scrollMilestones[milestone] = true;
+                        if (typeof logEvent === 'function') {
+                            logEvent('scroll_depth', {
+                                depth: milestone,
+                                page: 'home'
+                            });
+                        }
+                    }
+                });
+            }, 150); // Throttle scroll events
         });
     </script>
 
@@ -75,15 +120,31 @@
                 (urlBackRedirect.indexOf('?') > 0 ? '&' : '?') +
                 document.location.search.replace('?', '').toString();
 
-            history.pushState({}, '', location.href);
-            history.pushState({}, '', location.href);
-            history.pushState({}, '', location.href);
+            // Only push one state to avoid multiple back button presses
+            history.pushState({ isInternal: true }, '', location.href);
 
-            window.addEventListener('popstate', () => {
-                console.log('onpopstate', urlBackRedirect);
-                setTimeout(() => {
-                    location.href = urlBackRedirect;
-                }, 1);
+            // Track if user is navigating away from site
+            let navigatingAway = false;
+
+            // Detect when user clicks external links (checkout)
+            document.addEventListener('click', (e) => {
+                const link = e.target.closest('a');
+                if (link && link.href && !link.href.includes(window.location.hostname)) {
+                    navigatingAway = true;
+                }
+            });
+
+            window.addEventListener('popstate', (e) => {
+                // Only redirect if NOT coming back from external navigation
+                if (!navigatingAway && (!e.state || !e.state.isInternal)) {
+                    console.log('onpopstate', urlBackRedirect);
+                    setTimeout(() => {
+                        location.href = urlBackRedirect;
+                    }, 1);
+                } else {
+                    // Reset flag for next potential navigation
+                    navigatingAway = false;
+                }
             });
         }
 
@@ -92,6 +153,19 @@
 </head>
 
 <body>
+
+    <!-- Urgency Countdown Banner -->
+    <div class="urgency-banner-top">
+        <div class="urgency-content">
+            <div class="text-container">
+                <span class="urgency-text">OFERTA EXCLUSIVA EXPIRA EM:</span>
+                <span class="urgency-cta">Garanta agora com desconto!</span>
+            </div>
+            <div class="timer-container">
+                <span class="countdown-timer" id="countdown-timer">10:00</span>
+            </div>
+        </div>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero-section">
@@ -121,7 +195,7 @@
                         <span class="price-value">R$ 5,99</span>
                     </div>
 
-                    <a href="#premium-plan" class="btn btn-primary btn-cta fade-in">
+                    <a href="#features" class="btn btn-primary btn-cta fade-in">
                         <i class="fas fa-shopping-cart"></i> QUERO ESSA SUPER OFERTA
                     </a>
 
@@ -143,7 +217,7 @@
     </section>
 
     <!-- Features Section -->
-    <section class="features-section">
+    <section id="features" class="features-section">
         <div class="container">
             <h2 class="section-title fade-in">UM POUCO DO QUE VOCÊ TERÁ ACESSO...</h2>
 
@@ -377,106 +451,120 @@
 
             <div class="pricing-grid-new">
                 <!-- Basic Plan Card -->
-                <div class="pricing-card-new basic-card fade-in">
+                <div class="pricing-card-new basic-card fade-in pricing-card-basic-ref">
                     <div class="card-header-black">
                         <h3>PLANO BÁSICO</h3>
                     </div>
                     <div class="card-body-white">
-                        <div class="plan-benefits">
-                            <div class="benefit-item">
+                        <div class="card-content-wrapper">
+                            <div class="benefit-item dotted-bottom">
                                 <i class="fas fa-check-circle"></i>
-                                <span>+20 Moldes de Vestidos</span>
+                                <span><strong>+20 Moldes</strong> de Vestidos</span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item dotted-bottom">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Bônus Exclusivos</span>
+                                <span>Área de membros Comum</span>
+                            </div>
+
+                            <div class="price-section">
+                                <span class="currency">R$</span>
+                                <span class="amount">5,99</span>
+                            </div>
+
+                            <a href="redirect/index.html" class="btn-green" target="_blank">
+                                LIBERAR OFERTA BÁSICA
+                            </a>
+
+                            <div class="upsell-container">
+                                <p class="upsell-text">Mas antes de comprar...</p>
+                                <p class="upsell-highlight">temos uma oferta <strong>AINDA MAIS vantajosa</strong> para
+                                    você! Veja logo abaixo ⬇️</p>
                             </div>
                         </div>
-                        <div class="plan-price-green">R$5,99</div>
-                        <a href="redirect/index.html" class="btn-green" target="_blank">
-                            LIBERAR OFERTA BÁSICA
-                        </a>
-                        <p class="upsell-text">Mas antes de comprar...</p>
-                        <p class="upsell-highlight">temos uma oferta <strong>AINDA MAIS vantajosa</strong> para você!
-                            Veja logo abaixo ⬇️</p>
                     </div>
                 </div>
 
                 <!-- Premium Plan Card -->
-                <div id="premium-plan" class="pricing-card-new premium-card-new fade-in">
-                    <div class="card-header-black">
+                <div id="premium-plan" class="pricing-card-new premium-card-ref fade-in">
+                    <div class="card-header-premium">
                         <h3>PLANO PREMIUM</h3>
-                        <div class="best-seller-badge">🏆Nº1 em vendas</div>
+                        <div class="best-seller-badge-premium">🏆 Nº1 em vendas</div>
                     </div>
-                    <div class="card-body-purple">
-                        <div class="product-showcase">
-                            <img src="images/premium-dresses.jpg" alt="Moldes Premium" class="product-image">
-                            <div class="emoji-badge">🤩</div>
+                    <div class="card-body-wine">
+                        <div class="product-showcase-premium">
+                            <img src="images/premium-dresses.jpg" alt="Moldes Premium" class="product-image-premium">
+                            <div class="emoji-badge-premium">😍😍</div>
                         </div>
-                        <div class="price-old">DE R$149,00</div>
-                        <div class="price-new-label">POR APENAS</div>
-                        <div class="price-new-value">R$13,99</div>
 
-                        <div class="premium-benefits">
-                            <div class="benefit-item">
-                                <i class="fas fa-check-circle"></i>
-                                <span>+90 Moldes para vestidos curtos, midi, longos, sociais, casuais, etc...</span>
+                        <div class="price-container-premium">
+                            <div class="price-old-premium">DE R$149,90</div>
+                            <div class="price-label-premium">POR APENAS</div>
+                            <div class="price-ring-green">
+                                <span class="currency">R$</span>13,99
                             </div>
-                            <div class="benefit-item">
+                        </div>
+
+                        <div class="benefits-list-premium">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Vídeo aula de como Imprimir os Moldes</span>
+                                <span><strong>+90 Moldes</strong> para vestidos curtos, midi, longos, sociais, casuais,
+                                    etc...</span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Moldes de Saia Jeans, Social, Evasê</span>
+                                <span>Video aula de como <strong>Imprimir os Moldes</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Moldes Vestidos Básico</span>
+                                <span>Moldes de <strong>Saia Jeans, Social, Evasê</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Moldes Vestido Alcinha</span>
+                                <span>Moldes <strong>Vestidos Básico</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Moldes Vestido em Malha</span>
+                                <span>Moldes <strong>Vestido Alcinha</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Moldes Vestido Cruzado</span>
+                                <span>Moldes <strong>Vestido em Malha</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Moldes Vestido Mãe e Filha</span>
+                                <span>Moldes <strong>Vestido Cruzado</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Moldes Vestido Trapézio</span>
+                                <span>Moldes <strong>Vestido Mãe e Filha</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
-                                <span>Moldes Vestido Plus Size</span>
+                                <span>Moldes <strong>Vestido Trapézio</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Moldes <strong>Vestido Plus Size</strong></span>
+                            </div>
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
                                 <span><strong>E muitos outros</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-gift"></i>
                                 <span><strong>Área de Membros Premium</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-check-circle"></i>
                                 <span><strong>7 Dias de Garantia</strong></span>
                             </div>
-                            <div class="benefit-item">
+                            <div class="benefit-item-premium">
                                 <i class="fas fa-infinity"></i>
                                 <span><strong>Acesso vitalício</strong></span>
                             </div>
                         </div>
 
-                        <a href="https://pay.lowify.com.br/checkout?product_id=YWvt6H" class="btn-yellow"
+                        <a href="https://pay.lowify.com.br/checkout?product_id=YWvt6H" class="btn-yellow-premium"
                             target="_blank">
                             Quero essa Super Oferta!👆
                         </a>
@@ -586,6 +674,28 @@
                             e hospedagens de produtos online do Brasil.</p>
                     </div>
                 </div>
+
+                <div class="faq-item fade-in-fast">
+                    <button class="faq-question">
+                        <span>Preciso ter experiência profissional?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Não! O material foi desenvolvido tanto para iniciantes quanto para quem já costura. Os moldes
+                            são práticos e fáceis de entender.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item fade-in-fast">
+                    <button class="faq-question">
+                        <span>Os moldes vêm em quais tamanhos?</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Os moldes cobrem uma grade completa de tamanhos, do PP ao Plus Size, garantindo que você
+                            possa atender a todas as suas clientes.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -604,6 +714,47 @@
 
     <!-- Main JavaScript -->
     <script src="script.js"></script>
+
+    <!-- Countdown Timer Script -->
+    <script>
+        (function () {
+            const COUNTDOWN_KEY = 'countdown_end_time';
+            const DURATION = 10 * 60 * 1000; // 10 minutes in milliseconds
+
+            let endTime = sessionStorage.getItem(COUNTDOWN_KEY);
+
+            if (!endTime) {
+                endTime = Date.now() + DURATION;
+                sessionStorage.setItem(COUNTDOWN_KEY, endTime);
+            } else {
+                endTime = parseInt(endTime);
+            }
+
+            function updateCountdown() {
+                const now = Date.now();
+                const remaining = Math.max(0, endTime - now);
+
+                const minutes = Math.floor(remaining / 60000);
+                const seconds = Math.floor((remaining % 60000) / 1000);
+
+                const timerElement = document.getElementById('countdown-timer');
+                if (timerElement) {
+                    timerElement.textContent = `${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+
+                    // Add pulsing effect when time is running low
+                    if (remaining < 60000) { // Less than 1 minute
+                        timerElement.classList.add('urgent-pulse');
+                    }
+                }
+
+                if (remaining > 0) {
+                    requestAnimationFrame(updateCountdown);
+                }
+            }
+
+            updateCountdown();
+        })();
+    </script>
 </body>
 
 </html>

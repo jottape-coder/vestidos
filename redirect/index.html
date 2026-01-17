@@ -37,9 +37,24 @@
             btns.forEach(btn => {
                 btn.addEventListener('click', () => {
                     if (typeof logEvent === 'function') {
-                        logEvent('click_upgrade_action', {
+                        const targetUrl = btn.getAttribute('href');
+                        let eventName = 'click_redirect_cta'; // default
+                        let offerType = 'unknown';
+
+                        // Determine which button was clicked based on href
+                        if (targetUrl && targetUrl.includes('qKMVP8')) {
+                            eventName = 'click_redirect_premium'; // Premium upgrade (R$11,47)
+                            offerType = 'redirect_premium';
+                        } else if (targetUrl && targetUrl.includes('waSMt2')) {
+                            eventName = 'click_redirect_basic'; // Basic offer (R$5,99)
+                            offerType = 'redirect_basic';
+                        }
+
+                        logEvent(eventName, {
                             button_text: btn.innerText,
-                            action_type: btn.classList.contains('cta-primary') ? 'upgrade_yes' : 'upgrade_no'
+                            target_url: targetUrl,
+                            offer_type: offerType,
+                            page: 'redirect_upgrade'
                         });
                     }
                 });

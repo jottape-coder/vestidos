@@ -1,0 +1,219 @@
+/* Premium Card Ref Styling */
+.premium-card-ref {
+    border: none;
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    position: relative;
+    transform: scale(1.02);
+    /* Slight scale to emphasize importance */
+}
+
+.card-header-premium {
+    background: #000;
+    padding: var(--spacing-md);
+    text-align: center;
+    position: relative;
+    padding-bottom: 2rem;
+    /* Space for the badge overlap if needed */
+}
+
+.card-header-premium h3 {
+    color: var(--white);
+    font-size: 1.75rem;
+    font-weight: 900;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+.best-seller-badge-premium {
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #FFD700;
+    /* Gold/Yellow */
+    color: #000;
+    font-weight: 800;
+    padding: 5px 20px;
+    border-radius: 20px;
+    font-size: 1rem;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    white-space: nowrap;
+    z-index: 10;
+    border-bottom: 3px solid #DAA520;
+    /* Darker gold border for depth */
+}
+
+.card-body-wine {
+    background: linear-gradient(160deg, #700b52 0%, #3e052d 100%);
+    /* Deep wine/purple */
+    /* Alternative more similar to image: #6a0dad to darker */
+    background-image: url("data:image/svg+xml,%3Csvg width='20' height='20' viewBox='0 0 20 20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M1 1h2v2H1V1zm4 4h2v2H5V5zm4 4h2v2H9V9zm4 4h2v2h-2v-2zm4 4h2v2h-2v-2z' fill='%2390206e' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E"), linear-gradient(160deg, #700b52 0%, #2d0220 100%);
+    padding: var(--spacing-2xl) var(--spacing-lg) var(--spacing-lg);
+    text-align: center;
+    color: var(--white);
+    position: relative;
+}
+
+.product-showcase-premium {
+    position: relative;
+    margin-bottom: var(--spacing-lg);
+    margin-top: var(--spacing-md);
+}
+
+.product-image-premium {
+    max-width: 100%;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.emoji-badge-premium {
+    position: absolute;
+    bottom: -10px;
+    left: -10px;
+    font-size: 3rem;
+    filter: drop-shadow(0 4px 4px rgba(0, 0, 0, 0.3));
+    animation: float 3s ease-in-out infinite;
+}
+
+.price-container-premium {
+    margin: var(--spacing-xl) 0;
+    padding: var(--spacing-md) 0;
+}
+
+.price-old-premium {
+    color: #ff0000;
+    /* Red for emphasis */
+    font-weight: 800;
+    font-size: 1.5rem;
+    /* Large DE price */
+    text-decoration: none;
+    /* Removed strikethrough based on ref? Ref has "DE R$149,90" in RED without line, or maybe strikethrough. Let's keep no strikethrough but red color if plain text. Ref image has red text "DE R$149,90". */
+    margin-bottom: 5px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.price-label-premium {
+    font-size: 1.5rem;
+    font-weight: 900;
+    color: var(--white);
+    text-transform: uppercase;
+    margin-bottom: 5px;
+}
+
+.price-ring-green {
+    display: inline-block;
+    position: relative;
+    padding: 5px 30px;
+    margin-top: 5px;
+}
+
+.price-ring-green::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) rotate(-2deg);
+    width: 100%;
+    height: 100%;
+    border: 5px solid #00FF00;
+    /* Neon Green */
+    border-radius: 50%;
+    /* Oval */
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.4);
+    z-index: 0;
+}
+
+.price-ring-green .currency {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--white);
+    vertical-align: top;
+    margin-right: 5px;
+    position: relative;
+    z-index: 1;
+}
+
+.price-ring-green {
+    font-size: 5rem;
+    /* HUGE price */
+    font-weight: 900;
+    color: var(--white);
+    line-height: 1;
+    position: relative;
+    z-index: 1;
+    text-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+
+.benefits-list-premium {
+    text-align: left;
+    margin-bottom: var(--spacing-xl);
+    padding: 0 var(--spacing-sm);
+}
+
+.benefit-item-premium {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 12px;
+    gap: 10px;
+}
+
+.benefit-item-premium i {
+    color: #00FF00;
+    /* Neon check */
+    font-size: 1.5rem;
+    margin-top: 2px;
+    filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+    flex-shrink: 0;
+}
+
+.benefit-item-premium span {
+    font-size: 1.05rem;
+    line-height: 1.4;
+    color: var(--white);
+}
+
+.benefit-item-premium strong {
+    font-weight: 800;
+    /* Extra bold for keywords */
+}
+
+.btn-yellow-premium {
+    display: block;
+    width: 100%;
+    background: #FFF500;
+    /* Bright Neon Yellow */
+    color: #000;
+    font-weight: 900;
+    font-size: 1.3rem;
+    padding: 1.2rem;
+    border-radius: 12px;
+    text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 6px 0 #bf9b00, 0 15px 20px rgba(0, 0, 0, 0.4);
+    /* 3D effect button */
+    transition: all 0.2s;
+    margin-top: var(--spacing-lg);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-yellow-premium:hover {
+    transform: translateY(2px);
+    box-shadow: 0 4px 0 #bf9b00, 0 10px 15px rgba(0, 0, 0, 0.4);
+}
+
+.btn-yellow-premium::after {
+    content: "👆";
+    margin-left: 10px;
+}
+
+.payment-logos-premium {
+    margin-top: var(--spacing-lg);
+    opacity: 0.8;
+    filter: brightness(0) invert(1);
+    /* White logos */
+}

@@ -20,9 +20,14 @@
 <body>
     <div class="admin-container">
         <header class="admin-header">
-            <h1>📊 Dashboard do Funil</h1>
-            <div class="date-filter">
-                <span>Últimos 30 dias</span>
+            <h3>📊 Dashboard do Funil</h3>
+            <div class="header-actions">
+                <div class="date-filter">
+                    <span>Últimos 30 dias</span>
+                </div>
+                <button id="clear-metrics-btn" class="btn-danger">
+                    ⚠️ Limpar Métricas
+                </button>
             </div>
         </header>
 
@@ -35,19 +40,76 @@
                     <span class="metric-label">Page Views</span>
                 </div>
                 <div class="card metric-card">
-                    <h3>Leads (Cliques CTA)</h3>
-                    <p class="metric-value" id="total-leads">--</p>
-                    <span class="metric-label">Cliques de Compra</span>
+                    <h3>Oferta Básica</h3>
+                    <p class="metric-value" id="basic-offer-clicks">--</p>
+                    <span class="metric-label">Cliques Plano Básico</span>
                 </div>
                 <div class="card metric-card">
-                    <h3>Redirect (Upgrade)</h3>
+                    <h3>Oferta Premium</h3>
+                    <p class="metric-value" id="premium-offer-clicks">--</p>
+                    <span class="metric-label">Cliques Checkout</span>
+                </div>
+                <div class="card metric-card">
+                    <h3>Oferta Upgrade</h3>
+                    <p class="metric-value" id="upgrade-offer-clicks">--</p>
+                    <span class="metric-label">Navegação Premium</span>
+                </div>
+                <div class="card metric-card">
+                    <h3>Redirect (Views)</h3>
                     <p class="metric-value" id="total-redirects">--</p>
-                    <span class="metric-label">Visualizações</span>
+                    <span class="metric-label">Visualizações Pág.</span>
                 </div>
                 <div class="card metric-card">
-                    <h3>Conversão Home</h3>
+                    <h3>Redirect Premium</h3>
+                    <p class="metric-value" id="redirect-premium-clicks">--</p>
+                    <span class="metric-label">Upgrade R$11,47</span>
+                </div>
+                <div class="card metric-card">
+                    <h3>Redirect Básica</h3>
+                    <p class="metric-value" id="redirect-basic-clicks">--</p>
+                    <span class="metric-label">Básica R$5,99</span>
+                </div>
+
+                <!-- Scroll Depth Section -->
+                <div class="scroll-depth-section">
+                    <div class="card">
+                        <h3>Profundidade de Scroll (Home)</h3>
+                        <div class="scroll-metrics">
+                            <div class="scroll-milestone">
+                                <div class="milestone-label">25%</div>
+                                <div class="milestone-value" id="scroll-25">--</div>
+                                <div class="milestone-bar">
+                                    <div class="milestone-fill" id="scroll-bar-25" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="scroll-milestone">
+                                <div class="milestone-label">50%</div>
+                                <div class="milestone-value" id="scroll-50">--</div>
+                                <div class="milestone-bar">
+                                    <div class="milestone-fill" id="scroll-bar-50" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="scroll-milestone">
+                                <div class="milestone-label">75%</div>
+                                <div class="milestone-value" id="scroll-75">--</div>
+                                <div class="milestone-bar">
+                                    <div class="milestone-fill" id="scroll-bar-75" style="width: 0%"></div>
+                                </div>
+                            </div>
+                            <div class="scroll-milestone">
+                                <div class="milestone-label">100%</div>
+                                <div class="milestone-value" id="scroll-100">--</div>
+                                <div class="milestone-bar">
+                                    <div class="milestone-fill" id="scroll-bar-100" style="width: 0%"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card metric-card">
+                    <h3>Conversão Total</h3>
                     <p class="metric-value highlight" id="conversion-rate">--%</p>
-                    <span class="metric-label">Visitante -> Lead</span>
+                    <span class="metric-label">Visitante → Ofertas</span>
                 </div>
             </div>
 

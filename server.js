@@ -23,13 +23,12 @@ http.createServer((req, res) => {
 
     if (filePath === './') filePath = './index.html';
 
-    const extname = path.extname(filePath);
-    let contentType = MIME_TYPES[extname] || 'application/octet-stream';
 
-
+    // Normalize the path to remove trailing slashes for directory check
+    const normalizedPath = filePath.replace(/\/$/, '');
 
     // Check if it's a directory before trying to read it
-    if (fs.existsSync(filePath) && fs.lstatSync(filePath).isDirectory()) {
+    if (fs.existsSync(normalizedPath) && fs.lstatSync(normalizedPath).isDirectory()) {
         if (!parsedUrl.pathname.endsWith('/')) {
             // Redirect to directory with trailing slash, keeping query params
             parsedUrl.pathname += '/';
@@ -37,8 +36,12 @@ http.createServer((req, res) => {
             res.end();
             return;
         }
-        filePath = path.join(filePath, 'index.html');
+        filePath = path.join(normalizedPath, 'index.html');
     }
+
+    // Determine Content-Type AFTER handling directory paths
+    const extname = path.extname(filePath);
+    let contentType = MIME_TYPES[extname] || 'application/octet-stream';
 
     fs.readFile(filePath, (error, content) => {
         if (error) {
