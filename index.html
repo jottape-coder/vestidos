@@ -8,12 +8,18 @@
         content="Descubra como faturar até 3 mil por mês costurando e vendendo vestidos incríveis. +90 Moldes de Vestidos por apenas R$5,99">
     <title>Moldes de Vestidos - Aprenda a Costurar e Faturar</title>
 
-    <!-- Google Fonts -->
+    <!-- Google Fonts - Optimized for performance -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Load fonts asynchronously to prevent render-blocking -->
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
-        rel="stylesheet">
+        rel="stylesheet" media="print" onload="this.media='all'; this.onload=null;">
+    <noscript>
+        <link
+            href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap"
+            rel="stylesheet">
+    </noscript>
 
     <!-- Preconnect for critical external resources -->
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
@@ -27,11 +33,8 @@
     <!-- Preload LCP image for faster rendering -->
     <link rel="preload" as="image" href="images/vestido-novo.webp" fetchpriority="high">
 
-    <!-- Critical CSS loaded directly (no inline to prevent CLS) -->
-    <link rel="stylesheet" href="urgency-banner.css" fetchpriority="high">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="premium-styles.css">
-    <link rel="stylesheet" href="mobile-optimizations.css">
+    <!-- Critical CSS Bundle - Consolidated for performance -->
+    <link rel="stylesheet" href="critical-bundle.css" fetchpriority="high">
 
     <!-- Font Awesome with async loading -->
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style"
