@@ -1,0 +1,173 @@
+/* ===================================
+   MOBILE-SPECIFIC OPTIMIZATIONS
+   Adicionado para performance PageSpeed
+   =================================== */
+
+/* Mobile Priority - Reduce font sizes for better above-the-fold */
+@media (max-width: 768px) {
+
+    /* Hero Section - Compact for mobile */
+    .hero-section {
+        padding: 30px 0 40px;
+        /* Reduced vertical padding */
+    }
+
+    .hero-text h1 {
+        font-size: 1.5rem !important;
+        /* Reduced from 1.875rem */
+        line-height: 1.2 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .offer-banner {
+        margin: 12px auto !important;
+        padding: 12px 20px !important;
+    }
+
+    .offer-title {
+        font-size: 1.1rem !important;
+    }
+
+    .hero-subtext {
+        font-size: 0.95rem !important;
+        margin: 12px auto !important;
+        max-width: 90%;
+    }
+
+    .hero-image {
+        margin: 15px 0 !important;
+        /* Reduced */
+    }
+
+    .dress-icon {
+        max-width: 200px !important;
+        /* Reduced from 250px */
+    }
+
+    .price-highlight {
+        margin: 12px 0 !important;
+        /* Compacted */
+    }
+
+    .price-value {
+        font-size: 2rem !important;
+        /* Reduced from 2.5rem */
+    }
+
+    /* CTA Button - Larger touch target */
+    .btn,
+    .btn-primary,
+    .btn-cta,
+    .btn-green,
+    .btn-yellow-premium {
+        min-height: 56px !important;
+        /* Touch-friendly 56px minimum */
+        font-size: 1.05rem !important;
+        padding: 16px 24px !important;
+        font-weight: 700 !important;
+    }
+
+    /* Section spacing - more compact */
+    .features-section,
+    .bonus-section,
+    .target-section,
+    .how-it-works-section,
+    .testimonials-section,
+    .guarantee-section,
+    .about-section {
+        padding: 40px 0 !important;
+        /* Reduced from var(--spacing-3xl) */
+    }
+
+    .section-title {
+        font-size: 1.5rem !important;
+        margin-bottom: 24px !important;
+    }
+
+    /* Ensure body has stable padding for fixed banner */
+    body {
+        padding-top: 50px !important;
+        /* Reserve space for urgency banner */
+    }
+
+    /* Prevent layout shifts with aspect ratios */
+    .dress-icon {
+        aspect-ratio: 4/5;
+        height: auto;
+    }
+
+    .product-image-premium {
+        aspect-ratio: 3/4;
+        height: auto;
+    }
+
+    .bonus-img {
+        aspect-ratio: 3/2;
+        height: auto;
+    }
+}
+
+/* Extra Small Mobile (< 375px) - Very compact */
+@media (max-width: 374px) {
+    .hero-text h1 {
+        font-size: 1.3rem !important;
+    }
+
+    .dress-icon {
+        max-width: 180px !important;
+    }
+
+    .price-value {
+        font-size: 1.75rem !important;
+    }
+
+    .btn {
+        font-size: 0.95rem !important;
+    }
+}
+
+/* Performance: Reduce animations on mobile to save resources */
+@media (max-width: 768px) and (prefers-reduced-motion: no-preference) {
+    .fade-in {
+        transition: all 0.15s ease !important;
+        /* Faster animations */
+    }
+
+    @keyframes heroButtonPulse {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.015);
+            /* Reduced from 1.03 */
+        }
+    }
+
+    @keyframes priceGlow {
+
+        0%,
+        100% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.02);
+            /* Reduced */
+        }
+    }
+}
+
+/* Disable animations if user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
