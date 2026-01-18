@@ -24,8 +24,12 @@
     <link rel="dns-prefetch" href="https://fast.wistia.net">
     <link rel="dns-prefetch" href="https://pay.lowify.com.br">
 
-    <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Font Awesome with async loading -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" as="style"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    </noscript>
 
     <!-- Main CSS -->
     <link rel="stylesheet" href="style.css">
@@ -46,13 +50,7 @@
         document.head.appendChild(a);
     </script>
 
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-
-    <!-- Firebase Configuration -->
-    <script src="firebase-config.js"></script>
+    <!-- Firebase SDK moved to end of body for better performance -->
 
     <!-- Tracking Script -->
     <script>
@@ -195,7 +193,8 @@
                         por apenas <strong class="price-inline">R$5,99</strong></p>
 
                     <div class="hero-image fade-in">
-                        <img src="images/vestido-novo.png" alt="Moldes de Vestidos" class="dress-icon">
+                        <img src="images/vestido-novo.png" alt="Moldes de Vestidos" class="dress-icon" width="400"
+                            height="500">
                     </div>
 
 
@@ -209,7 +208,8 @@
                     </a>
 
                     <div class="trust-badge fade-in">
-                        <img src="images/compra-segura.webp" alt="Compra Segura" class="badge-img">
+                        <img src="images/compra-segura.webp" alt="Compra Segura" class="badge-img" width="300"
+                            height="80">
                     </div>
                 </div>
             </div>
@@ -231,7 +231,8 @@
             <h2 class="section-title fade-in">UM POUCO DO QUE VOCÊ TERÁ ACESSO...</h2>
 
             <div class="premium-showcase fade-in">
-                <img src="images/moldes-premium.webp" alt="Moldes Premium" class="premium-img">
+                <img src="images/moldes-premium.webp" alt="Moldes Premium" class="premium-img" width="800" height="600"
+                    loading="lazy">
             </div>
 
             <div class="features-checklist">
@@ -262,7 +263,8 @@
             </div>
 
             <div class="features-security-badge fade-in">
-                <img src="images/compra-segura.webp" alt="Compra Segura" class="security-badge-img">
+                <img src="images/compra-segura.webp" alt="Compra Segura" class="security-badge-img" width="300"
+                    height="80" loading="lazy">
             </div>
         </div>
     </section>
@@ -278,7 +280,8 @@
                         <h3>+30 Moldes de Brinde</h3>
                     </div>
                     <div class="bonus-content">
-                        <img src="images/bonus-moldes.webp" alt="Moldes de Brinde" class="bonus-img">
+                        <img src="images/bonus-moldes.webp" alt="Moldes de Brinde" class="bonus-img" width="600"
+                            height="400" loading="lazy">
                         <p class="bonus-description">Ganhe <strong>+30 moldes de brinde</strong> para criar vestidos
                             infantis incríveis: fáceis de usar, adaptáveis e inspiradores.</p>
                         <p class="bonus-price">DE <span class="strikethrough">R$297,00</span></p>
@@ -291,7 +294,8 @@
                         <h3>Os Melhores Tecidos</h3>
                     </div>
                     <div class="bonus-content">
-                        <img src="images/bonus-tecidos.webp" alt="Guia de Tecidos" class="bonus-img">
+                        <img src="images/bonus-tecidos.webp" alt="Guia de Tecidos" class="bonus-img" width="600"
+                            height="400" loading="lazy">
                         <p class="bonus-description">Descubra <strong>os melhores tecidos para vestidos:</strong> toque
                             suave, estampas encantadoras e durabilidade ideal para conforto e alegria dos seus clientes.
                         </p>
@@ -501,7 +505,8 @@
                     </div>
                     <div class="card-body-wine">
                         <div class="product-showcase-premium">
-                            <img src="images/premium-dresses.jpg" alt="Moldes Premium" class="product-image-premium">
+                            <img src="images/premium-dresses.jpg" alt="Moldes Premium" class="product-image-premium"
+                                width="600" height="800" loading="lazy">
                             <div class="emoji-badge-premium">😍😍</div>
                         </div>
 
@@ -579,7 +584,8 @@
                         </a>
 
                         <div class="payment-logos-premium">
-                            <img src="images/payment-logos.png" alt="Formas de Pagamento">
+                            <img src="images/payment-logos.png" alt="Formas de Pagamento" width="400" height="80"
+                                loading="lazy">
                         </div>
                     </div>
                 </div>
@@ -592,7 +598,8 @@
         <div class="container">
             <div class="guarantee-content fade-in-fast">
                 <div class="guarantee-badge">
-                    <img src="images/garantia-7-dias.webp" alt="Garantia 7 Dias" class="guarantee-img">
+                    <img src="images/garantia-7-dias.webp" alt="Garantia 7 Dias" class="guarantee-img" width="300"
+                        height="300" loading="lazy">
                 </div>
                 <div class="guarantee-text">
                     <h2>Garantia de 7 Dias</h2>
@@ -614,7 +621,8 @@
 
             <div class="about-content fade-in-fast">
                 <div class="about-image">
-                    <img src="images/autora.webp" alt="Luiza Fernandes" class="author-img">
+                    <img src="images/autora.webp" alt="Luiza Fernandes" class="author-img" width="400" height="400"
+                        loading="lazy">
                 </div>
                 <div class="about-text">
                     <h3>Luiza Fernandes</h3>
@@ -720,6 +728,12 @@
             </p>
         </div>
     </footer>
+
+    <!-- Firebase SDK with defer for better performance -->
+    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
+    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
+    <script defer src="firebase-config.js"></script>
 
     <!-- Main JavaScript -->
     <script src="script.js"></script>
