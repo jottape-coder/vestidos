@@ -743,11 +743,26 @@
         </div>
     </footer>
 
-    <!-- Firebase SDK with defer for better performance -->
-    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js"></script>
-    <script defer src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js"></script>
-    <script defer src="firebase-config.js"></script>
+    <!-- Analytics Scripts - Loaded after page interactive -->
+    <script>
+        // Load Firebase Analytics after page is fully interactive
+        window.addEventListener('load', function () {
+            setTimeout(function () {
+                const firebaseScripts = [
+                    'https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js',
+                    'https://www.gstatic.com/firebasejs/9.22.0/firebase-analytics-compat.js',
+                    'https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore-compat.js',
+                    'firebase-config.js'
+                ];
+
+                firebaseScripts.forEach(function (src) {
+                    const script = document.createElement('script');
+                    script.src = src;
+                    document.body.appendChild(script);
+                });
+            }, 2000); // 2 second delay for better initial performance
+        });
+    </script>
 
     <!-- Main JavaScript -->
     <script src="script.js"></script>
