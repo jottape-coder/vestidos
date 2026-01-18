@@ -1,0 +1,130 @@
+/* CRITICAL CSS ONLY - Inline in <head> */
+/* Fonts */
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 700;
+    font-display: optional;
+    src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLEj6Z1xlFd2JQEk.woff2) format('woff2')
+}
+
+@font-face {
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-display: optional;
+    src: url(https://fonts.gstatic.com/s/poppins/v20/pxiByp8kv8JHgFVrLCz7Z1xlFd2JQEk.woff2) format('woff2')
+}
+
+/* Reset & Body */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+html {
+    scroll-behavior: smooth
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding-top: 60px;
+    color: #1A202C;
+    line-height: 1.6
+}
+
+/* Urgency Banner (Above-the-fold crítico) */
+.urgency-banner-top {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    background: linear-gradient(135deg, #DC2626 0%, #EF4444 100%);
+    color: #fff;
+    padding: 12px 20px;
+    z-index: 9999;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .3)
+}
+
+.urgency-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-family: 'Poppins', sans-serif
+}
+
+.urgency-text {
+    font-weight: 700;
+    font-size: 1.1rem;
+    letter-spacing: .5px;
+    text-transform: uppercase
+}
+
+.countdown-timer {
+    background: rgba(255, 255, 255, .2);
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-weight: 800;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    min-width: 80px;
+    text-align: center;
+    border: 2px solid rgba(255, 255, 255, .3)
+}
+
+/* Hero Critical (Above-the-fold) */
+.hero-section {
+    background: #FAFAFA;
+    padding: 40px 0 60px;
+    text-align: center
+}
+
+.hero-text h1 {
+    font-size: 1.875rem;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 12px;
+    color: #2D3748
+}
+
+.offer-banner {
+    background: linear-gradient(135deg, #FDF4FF 0%, #FFF 100%);
+    border: 2px dashed #C084FC;
+    padding: 1rem 2rem;
+    border-radius: 12px;
+    margin: 12px auto;
+    display: inline-block
+}
+
+.offer-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    color: #9333EA
+}
+
+.hero-subtext {
+    font-size: 1rem;
+    line-height: 1.5;
+    color: #4A5568;
+    margin: 12px auto;
+    max-width: 500px
+}
+
+.hero-image {
+    margin: 15px 0
+}
+
+.dress-icon {
+    max-width: 250px;
+    opacity: .95
+}
+
+.price-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: #16A34A
+}
